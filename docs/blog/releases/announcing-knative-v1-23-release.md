@@ -48,6 +48,43 @@ A fix was made to the ResponseRecorder hijack state tracking for WebSocket conne
 
 ---
 
+### Serving Networking Extensions
+
+#### net-contour
+
+**Release notes**: [net-contour 1.23](https://github.com/knative-extensions/net-contour/releases/tag/knative-v1.23.0)
+
+**Contour Updated to v1.33.5**
+
+Contour has been bumped to v1.33.5 ([#1292](https://github.com/knative-extensions/net-contour/pull/1292) by [@dprotaso](https://github.com/dprotaso)), picking up the latest bug fixes and patches.
+
+
+#### net-gateway-api
+
+**Release notes**: [net-gateway-api 1.23](https://github.com/knative-extensions/net-gateway-api/releases/tag/knative-v1.23.0)
+
+**Proxy Protocol Support**
+
+Support for proxy protocol has been added ([#947](https://github.com/knative-extensions/net-gateway-api/pull/947) by [@BobyMCbobs](https://github.com/BobyMCbobs)), enabling backends to receive the original client connection information when traffic passes through load balancers.
+
+
+#### net-istio
+
+**Release notes**: [net-istio 1.23](https://github.com/knative-extensions/net-istio/releases/tag/knative-v1.23.0)
+
+A maintenance release with CI fixes and dependency updates.
+
+
+#### net-kourier
+
+**Release notes**: [net-kourier 1.23](https://github.com/knative-extensions/net-kourier/releases/tag/knative-v1.23.0)
+
+**IPv6 Support**
+
+IPv6 support has been added to Kourier ([#1455](https://github.com/knative-extensions/net-kourier/pull/1455) by [@linkvt](https://github.com/linkvt)), extending dual-stack networking support across the Knative networking stack.
+
+---
+
 ## Eventing
 
 **Release notes**: [Knative Eventing 1.23](https://github.com/knative/eventing/releases/tag/knative-v1.23.0)
@@ -70,9 +107,9 @@ A `klog-verbosity` flag has been added to the `config-logging` ConfigMap ([#9035
 
 ---
 
-## Eventing Extensions
+### Eventing Extensions
 
-### Apache Kafka Broker
+#### Apache Kafka Broker
 
 **Release notes**: [Kafka Broker 1.23](https://github.com/knative-extensions/eventing-kafka-broker/releases/tag/knative-v1.23.0)
 
@@ -93,7 +130,7 @@ Netty, logback-core, vertx-core, and jackson-core have been updated to resolve k
 - The OpenTelemetry BOM ordering has been fixed to ensure the declared version takes precedence ([#4752](https://github.com/knative-extensions/eventing-kafka-broker/pull/4752) by [@creydr](https://github.com/creydr))
 - A timer drift in the cache implementation has been fixed ([#4762](https://github.com/knative-extensions/eventing-kafka-broker/pull/4762) by [@dsimansk](https://github.com/dsimansk))
 
-### RabbitMQ Broker and Source
+#### RabbitMQ Broker and Source
 
 **Release notes**: [RabbitMQ 1.23](https://github.com/knative-extensions/eventing-rabbitmq/releases/tag/knative-v1.23.0)
 
@@ -162,6 +199,28 @@ Multiple fixes improve IPv6 support: dual-stack `net.Dial` via Happy Eyeballs ([
 **Release notes**: [Client 1.23](https://github.com/knative/client/releases/tag/knative-v1.23.0)
 
 A maintenance release with dependency updates and CI improvements.
+
+
+### kn-plugin-quickstart
+
+**Release notes**: [Quickstart 1.23](https://github.com/knative-extensions/kn-plugin-quickstart/releases/tag/knative-v1.23.0)
+
+**Custom Kind Host Port**
+
+You can now set a custom host port when creating Kind clusters ([#660](https://github.com/knative-extensions/kn-plugin-quickstart/pull/660) by [@psschwei](https://github.com/psschwei)), making it easier to avoid port conflicts in multi-cluster or shared development environments.
+
+**Improved Startup Reliability**
+
+The plugin now waits for pods to appear before checking readiness ([#669](https://github.com/knative-extensions/kn-plugin-quickstart/pull/669) by [@psschwei](https://github.com/psschwei)), fixing race conditions during cluster setup.
+
+
+### Other Client Plugins
+
+These releases contain dependency updates:
+
+- [kn-plugin-admin](https://github.com/knative-extensions/kn-plugin-admin/releases/tag/knative-v1.23.0)
+- [kn-plugin-event](https://github.com/knative-extensions/kn-plugin-event/releases/tag/knative-v1.23.0)
+- [kn-plugin-source-kafka](https://github.com/knative-extensions/kn-plugin-source-kafka/releases/tag/knative-v1.23.0)
 
 ---
 
