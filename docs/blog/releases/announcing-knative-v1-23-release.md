@@ -196,6 +196,7 @@ New Contributors 🎉:
 - [@jbunting](https://github.com/jbunting)
 - [@mdering](https://github.com/mdering)
 - [@Nachiket-Roy](https://github.com/Nachiket-Roy)
+- [@Shrey327](https://github.com/Shrey327)
 - [@vgaidarji](https://github.com/vgaidarji)
 - [@Vi-shub](https://github.com/Vi-shub)
 - [@vishwas-droid](https://github.com/vishwas-droid)
