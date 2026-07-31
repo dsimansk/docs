@@ -19,6 +19,7 @@ Follow the instructions in [Installing Knative](https://knative.dev/docs/install
 - **Generic ephemeral volumes** in Serving, enabling dynamically provisioned pod-scoped storage
 - **EndpointSlice migration** in Eventing, moving off deprecated v1 Endpoints
 - **IPv6 support** for Serving autoscaler EndpointSlice creation
+- **New `func logs` and `func clusters` commands** for streaming function logs and one-command local dev cluster creation
 - **Security updates** across Kafka Broker dependencies and a RabbitMQ ingress shutdown race fix
 
 Minimal supported version of Kubernetes is 1.34. See our [release schedule](https://github.com/knative/community/blob/main/mechanics/RELEASE-SCHEDULE.md) for details.
@@ -108,6 +109,54 @@ A race condition between RabbitMQ connection close and HTTP drain during ingress
 
 ---
 
+## Functions
+
+**Release notes**: [Functions 1.23](https://github.com/knative/func/releases/tag/knative-v1.23.0)
+
+A substantial release with new commands, improved builder support, and a growing MCP server.
+
+**New `func logs` Command**
+
+A new `func logs` command streams function logs directly from the CLI ([#3669](https://github.com/knative/func/pull/3669) by [@Itx-Psycho0](https://github.com/Itx-Psycho0)), removing the need to switch to `kubectl` or a dashboard to see what your function is doing.
+
+**Dev Cluster Creation with `func clusters`**
+
+The new `func clusters` command can create local development clusters with Knative pre-installed ([#3754](https://github.com/knative/func/pull/3754) by [@lkingland](https://github.com/lkingland)), making it easier to get a working Knative environment for local development.
+
+**Kafka Event Sourcing for Go Functions**
+
+Go functions can now be scaffolded with Kafka event sourcing support ([#3950](https://github.com/knative/func/pull/3950) by [@aliok](https://github.com/aliok)), providing a ready-made template for consuming Kafka events.
+
+**ImagePullSecret Support**
+
+Functions now support specifying an `ImagePullSecret` ([#3656](https://github.com/knative/func/pull/3656) by [@creydr](https://github.com/creydr)), enabling deployments from private registries that require authentication.
+
+**func-operator Integration**
+
+The deploy command now integrates with the func-operator ([#3657](https://github.com/knative/func/pull/3657) by [@creydr](https://github.com/creydr)), and the deployer choice is now persisted in `func.yaml` with guards against incompatible deployer switches ([#3953](https://github.com/knative/func/pull/3953) by [@gauron99](https://github.com/gauron99)).
+
+**Improved `.funcignore` Support**
+
+`.funcignore` rules are now applied consistently across the host builder ([#3624](https://github.com/knative/func/pull/3624) by [@lkingland](https://github.com/lkingland)) and the OCI builder ([#3789](https://github.com/knative/func/pull/3789) by [@gauron99](https://github.com/gauron99)).
+
+**AWS ECR Credentials Loader**
+
+An AWS ECR credentials loader has been added to Kubernetes keychains ([#3864](https://github.com/knative/func/pull/3864) by [@Nachiket-Roy](https://github.com/Nachiket-Roy)), enabling seamless authentication with ECR registries in cluster builds.
+
+**MCP Server Improvements**
+
+The MCP server received numerous fixes and enhancements, including secret and ConfigMap support for `config_envs_add` ([#3685](https://github.com/knative/func/pull/3685) by [@Ankitsinghsisodya](https://github.com/Ankitsinghsisodya)), split config tools for accurate tool annotations ([#3661](https://github.com/knative/func/pull/3661) by [@Ankitsinghsisodya](https://github.com/Ankitsinghsisodya)), and version info in healthcheck output ([#3745](https://github.com/knative/func/pull/3745) by [@cubaseuser123](https://github.com/cubaseuser123)).
+
+**Security Hardening**
+
+Config files now use secure file permissions ([#3726](https://github.com/knative/func/pull/3726) by [@Itx-Psycho0](https://github.com/Itx-Psycho0)), GitHub webhooks default to TLS verification ([#3714](https://github.com/knative/func/pull/3714) by [@Vi-shub](https://github.com/Vi-shub)), and shell metacharacters are now rejected in prefix validation ([#3760](https://github.com/knative/func/pull/3760) by [@Elvand-Lie](https://github.com/Elvand-Lie)).
+
+**IPv6 and Dual-Stack Support**
+
+Multiple fixes improve IPv6 support: dual-stack `net.Dial` via Happy Eyeballs ([#3692](https://github.com/knative/func/pull/3692)), IPv6 in local Kind cluster setup ([#3693](https://github.com/knative/func/pull/3693)), and listening on IPv6 loopback ([#3817](https://github.com/knative/func/pull/3817)) — all by [@matejvasek](https://github.com/matejvasek).
+
+---
+
 ## Client
 
 **Release notes**: [Client 1.23](https://github.com/knative/client/releases/tag/knative-v1.23.0)
@@ -136,13 +185,21 @@ New Contributors 🎉:
 
 - [@brucearctor](https://github.com/brucearctor)
 - [@chriscannon](https://github.com/chriscannon)
+- [@cubaseuser123](https://github.com/cubaseuser123)
 - [@deadtrickster](https://github.com/deadtrickster)
 - [@Dominic-Stout-GA-i3](https://github.com/Dominic-Stout-GA-i3)
+- [@Elvand-Lie](https://github.com/Elvand-Lie)
 - [@gouthamhusky](https://github.com/gouthamhusky)
 - [@immanuwell](https://github.com/immanuwell)
+- [@Itx-Psycho0](https://github.com/Itx-Psycho0)
 - [@jahnavigajjala-3](https://github.com/jahnavigajjala-3)
 - [@jbunting](https://github.com/jbunting)
+- [@mdering](https://github.com/mdering)
+- [@Nachiket-Roy](https://github.com/Nachiket-Roy)
 - [@vgaidarji](https://github.com/vgaidarji)
+- [@Vi-shub](https://github.com/Vi-shub)
+- [@vishwas-droid](https://github.com/vishwas-droid)
+- [@xenonnn4w](https://github.com/xenonnn4w)
 
 ---
 
