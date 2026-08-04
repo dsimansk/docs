@@ -130,6 +130,7 @@ Netty, logback-core, vertx-core, and jackson-core have been updated to resolve k
 - The OpenTelemetry BOM ordering has been fixed to ensure the declared version takes precedence ([#4752](https://github.com/knative-extensions/eventing-kafka-broker/pull/4752) by [@creydr](https://github.com/creydr))
 - A timer drift in the cache implementation has been fixed ([#4762](https://github.com/knative-extensions/eventing-kafka-broker/pull/4762) by [@dsimansk](https://github.com/dsimansk))
 
+
 #### RabbitMQ Broker and Source
 
 **Release notes**: [RabbitMQ 1.23](https://github.com/knative-extensions/eventing-rabbitmq/releases/tag/knative-v1.23.0)
@@ -226,11 +227,18 @@ These releases contain dependency updates:
 
 ## Operator
 
-<!-- TODO: Operator 1.23 release pending -->
-
 **Release notes**: [Operator 1.23](https://github.com/knative/operator/releases/tag/knative-v1.23.0)
 
-TODO: Add operator release notes when the release is available.
+This release switches to the official secretreader plugin and includes fixes for CRD webhooks and eventing RBAC.
+
+**Official SecretReader Plugin**
+
+The operator now uses the official secretreader plugin ([#2306](https://github.com/knative/operator/pull/2306) by [@kahirokunn](https://github.com/kahirokunn)), replacing the previous custom implementation.
+
+**Bug Fixes**
+
+- Operator CRD conversion webhooks have been restored ([#2293](https://github.com/knative/operator/pull/2293) by [@kahirokunn](https://github.com/kahirokunn))
+- `AggregationRuleTransform` has been moved to a shared common package to fix an eventing RBAC race condition ([#2316](https://github.com/knative/operator/pull/2316) by [@creydr](https://github.com/creydr))
 
 ---
 
